@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(document.getElementById('form'));
     
         try {
-            const response = await fetch('https://back-i4i2.onrender.com', {
+            const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
                 method: 'POST',
                 body: formData,
             });
