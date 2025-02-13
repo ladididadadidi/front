@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css?v=1.0">
+
+    <script src="https://kit.fontawesome.com/9d5c9c8785.js" crossorigin="anonymous"></script>
+
+    <style type="text/css" media="screen, print">
+        @font-face {
+            font-family: 'S-CoreDream-3Light';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+            unicode-range: U+AC00-D7A3, U+1100-11FF;
+        }
+
+        @font-face {
+            font-family: 'SF_HambakSnow';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff') format('woff');
+            unicode-range: U+0020-007F;
+        }
+    
+        body { font-family: 'S-CoreDream', 'SF_HambakSnow', serif }
+    </style>
+
+    <script src="main.js" defer></script>
+
+</head>
+
+<body>
+
+  <div id='wrap'>
+
+    <nav class = "navbar">
+        <ul class="navBar__tittle">
+            <li><a href = "index.html">Rate's Portfolio</a></li>
+        </ul>
+    </nav>
+
+
+    <nav class = "navBar">
+
+        <div class = "navBar__home">
+            <li><a href="index.html">Rate's Portfolio</a></li>
+        </div>
+
+        <ul class="navBar__menu">
+            <li><a href="index.html">Rate's Portfolio</a></li>
+            <li><a href = "guide.html">Guide</a></li>
+            <li><a href = "popo.html">Gallery</a></li>
+            <li><a href = "contact.html">Contact</a></li>
+        </ul>
+
+        <a href="#" class = "navBar__tooglebtn">
+            <i class="fa-solid fa-bars"></i>
+        </a>
+
+
+        
+
+
+     </nav>
+
+
+    <main>
+        <h2>촬영문의</h2>
+
+        <form id="form">
+            <div class="input__container">
+                <label for="name">SNS 계정</label>
+                <input type="text" id="name" name="name" placeholder="트위터 계정 혹은 인스타 계정 등" required />
+            </div>
+    
+            <div>
+                <label for="contact">촬영 종류</label><br><br>
+                <input type="radio" name="contact" value="코스프레 촬영"> 코스프레 촬영
+                <input type="radio" name="contact" value="컨셉 촬영"> 컨셉 촬영
+                <input type="radio" name="contact" value="스냅 촬영"> 스냅 촬영
+            </div>
+    
+            <div class="input__container">
+                <label for="person">촬영 인원</label>
+                <input type="text" id="person" name="person" required />
+            </div>
+    
+            <div class="input__container">
+                <label for="character">촬영 캐릭터 OR 촬영 컨셉</label>
+                <input type="text" id="character" name="character" placeholder="코스프레일 경우 장르-캐릭터" required />
+            </div>
+    
+            <div class="input__container">
+                <label for="location">희망 촬영 장소</label>
+                <textarea id="location" name="location" required></textarea>
+            </div>
+    
+            <div class="input__container">
+                <label for="date">희망 촬영일 (복수 기재 가능)</label>
+                <textarea id="date" name="date" required></textarea>
+            </div>
+    
+            <div>
+                <label for="contactMethod">연락 가능한 방법</label> <br><br>
+                <input type="radio" name="contactMethod" value="트위터 DM"> 트위터 DM
+                <input type="radio" name="contactMethod" value="인스타 DM"> 인스타 DM
+                <input type="radio" name="contactMethod" value="오픈 카톡"> 오픈 카톡
+            </div>
+            <div class="input__container">
+                <input type="text" id="character" name="character" placeholder="SNS 계정 혹은 오픈 카톡 링크" required />
+            </div>
+    
+             <div class="input__container">
+                <label for="message">그 외 문의사항 (선텍) </label>
+                <textarea id="message" name="message"></textarea>
+            </div>
+    
+            <div>
+                <label for="files">시안 (jpg, png, pdf 첨부 가능 , 최대 10MB)</label><br><br>
+                <input type="file" id="fileInput" name="files" accept=".jpeg,.png,.pdf" multiple />
+            </div>
+
+            <div id="fileList"></div>
+    
+            <button type="submit">전송</button>
+        </form>
+
+        <div id="confirmModal" class="modal2 hidden2">
+            <div class="modal-content2">
+                <p>정말 전송하시겠습니까?</p> 
+                <div class="button-container">
+                    <button id="confirmSubmit" class="button2">확인</button>
+            <button id="cancelSubmit" class="button2">취소</button>
+                </div>
+            </div>
+        </div>
+        
+
+    </main>
+  <footer>
+            <nav class = "nav" >
+                <ul class="navBar__links">
+                    <li>
+                        <a href="https://x.com/ratape_" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://www.instagram.com/cyarrrk_14/" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>    
+                    </li>
+
+                    <li>
+                        <a href="https://open.kakao.com/o/sHPA4J8g" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-message"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <p>
+            <span>Copyright 2025. Rate. All Rights Reserved.</span>
+            </p>
+        </footer>
+    </div>
+        
+</body>
+
+</html>

@@ -1,0 +1,319 @@
+:root{
+    --text-color: rgb(229, 229, 229);
+    --background-color:rgb(33, 33, 33);
+    --main-color:rgb(255, 255, 255);
+    --accent-color:rgb(97, 97, 97);
+    --hover-color:rgb(255, 183, 0); 
+    --twitter-color:rgb(38, 129, 255);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    unicode-range: U+AC00-D7A3, U+1100-11FF;
+}
+
+@font-face {
+    font-family: 'SF_HambakSnow';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff') format('woff');
+    unicode-range: U+0020-007F;
+    font-weight: normal;
+}
+
+/* 타이틀 기본 스타일 */
+#title-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* 배경색 */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 3s ease-out; /* 2초 동안 부드럽게 사라지도록 설정 */
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+html,body { 
+    background-color: var(--main-color);
+    margin: 0; 
+    font-family:'S-CoreDream-3Light', 'SF_HambakSnow', sans-serif !important; 
+
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+#wrap {
+    min-height: 100vh;
+    position: relative;
+    width: 100%;
+}
+
+footer {
+	width: 100%;
+	height: 100px; /* 내용물에 따라 알맞는 값 설정 */
+	position: absolute;
+    border-top: 1px solid;
+    margin-top: -161px;
+    padding-top: 30px;
+    background-color: var(--background-color);
+    padding-bottom: 130px;
+}
+
+footer a {
+    display: flex;
+
+}
+
+footer p {
+    display: flex;
+    margin-top: 15px;
+    justify-content:center;
+    box-sizing: border-box;
+    width: 85%;
+}
+
+
+p{
+    font-size: 90%;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    line-height: 2;
+    letter-spacing: 0px;
+    margin-left: 7%;
+}
+
+section {
+	padding-bottom: 10%; /* footer의 height값과 동일 */
+}
+ 
+
+.navBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color);
+    padding: 2px 2%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nav{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box; 
+}
+
+.navBar__menu {
+    display: flex;
+    list-style: none;
+    text-align: center;
+}
+
+.navBar__home{
+    display: none;
+    list-style: none;
+    text-align: center;
+}
+
+.navBar__home li{
+    width: 40%;
+}
+
+.navBar__menu li {
+    justify-content: center;
+    width: 120px;
+    
+}
+
+.navBar__tittle, .navBar__mtittle {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+    font-size: 25px;
+}
+
+.navBar__tittle li, .navBar__mtittle li {
+    justify-content: center;
+}
+
+.navBar__menu li:first-child {
+    display: none; /* 큰 화면에서 Home 숨김 */
+}
+
+.navBar__tittle a, .navBar__mtittle a{
+    color:black
+}
+
+.navBar_down{
+    width: 100%;
+    height: 20%;
+    text-align:center;
+    background-color: rgb(16, 235, 162);
+    box-shadow: 5px 3px 4px rgba(0, 0, 220, 0.4);
+}
+
+.navBar__links {
+    display: flex;
+    align-items: center; /* 세로 정렬 */
+    gap: 25px; /* 아이콘 간 간격 */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-left: 0;
+    color:var(--accent-color);
+}
+
+
+.navBar__links li {
+    padding: 0;
+    margin: 0;
+}
+
+.navBar__links i {
+    font-size: 20px; /* 아이콘 크기 통일 */
+    line-height: 1; /* 세로 간격 조정 */
+}
+
+.navBar__links a {
+    color: inherit; /* 아이콘의 기본 색상 유지 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+.navBar__tooglebtn{
+    position: absolute;
+    right: 40px;
+    display: none;
+}
+
+.navBar__links a:hover {
+    color: var(--hover-color); /* 호버 시 색상 변경 */
+}
+
+
+.slider-container {
+    width: 100vw; /* 전체 너비 */
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    
+}
+
+.slide {
+    width: 25vw; /* 데스크탑: 4장씩 표시 */
+    height: calc(25vw * 1.5); /* 3:2 비율 유지 */
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* 모바일에서는 한 장씩 표시 */
+@media (max-width: 767px) {
+    .slide {
+        width: 100vw;
+        height: calc(100vw * 1.5);
+    }
+    .slider {
+        transform: translateX(-100vw);
+    }
+
+    
+    .navBar {
+        flex-direction: column; /* 세로로 배치 */
+        align-items: flex-start; /* 메뉴는 왼쪽 정렬 유지 */
+        padding: 20px 24px;
+    }
+
+    .navBar i{
+        color:var(--accent-color)
+    }
+    
+    .navBar__home{
+        display: flex;
+    }
+
+    .navBar__links {
+        justify-content: center; /* 가로 중앙 정렬 */
+        align-items: center; /* 세로 중앙 정렬 */
+        width: 100%; /* 부모 요소 크기 100% 설정 */
+        margin-top: 16px; /* 상단 여백 추가 */
+        margin-bottom: 15px;
+    }
+
+    .navBar__menu{
+        flex-direction: column;
+        align-items: center;
+        width: 91%;
+        display: none;
+        gap:7px;
+    }
+
+    .navBar__menu li{
+        width: 100%;
+        text-align: center;
+    }
+
+    .navBar__tooglebtn{
+        display: block;
+    }
+
+    .navBar__menu.active {
+        display: flex;
+    }
+
+    .navBar__tittle{
+        display: none;
+    }
+
+
+    p{
+        padding-bottom: 30px;
+    }
+
+    .link{
+        display: flex;
+    }
+
+    .link a{
+        color: #000;
+    }
+
+    footer{
+        margin-top:-70px;
+    }
+
+
+}
