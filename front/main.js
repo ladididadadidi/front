@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("✅ confirmButton:", confirmButton);
     console.log("✅ cancelButton:", cancelButton);
 
+    // 버튼이 존재하지 않으면 에러 로그 출력하고 스크립트 종료
     if (!confirmButton || !cancelButton) {
         console.error("❌ 버튼 요소를 찾을 수 없습니다. HTML에서 id 확인 필요!");
         return;
@@ -140,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.assign('contact.html');  // 페이지 리다이렉션
     });
 });
+
 
 
 //타이틀
