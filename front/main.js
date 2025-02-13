@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
                 method: 'POST',
-                body: formData,
+                body: formData, // FormData는 Content-Type을 자동으로 설정하므로 헤더 설정 불필요
             });
     
             if (response.ok) {
