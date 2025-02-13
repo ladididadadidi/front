@@ -79,61 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/*
-document.addEventListener('DOMContentLoaded', () => {
-    const level1Menu = document.querySelector('.filter-menu.level-1');
-    const level2Menu = document.querySelector('.filter-menu.level-2');
-    const photos = document.querySelectorAll('.photos img');
-    const leftContainer = document.querySelector('.left');
-    const rightContainer = document.querySelector('.right');
-
-
-    // Level 1 필터링
-    level1Menu.addEventListener('click', (e) => {
-        if (!e.target.matches('span')) return;
-
-        const category = e.target.dataset.category;
-
-        // Level 2 메뉴 표시 조건
-        if (category === 'cosplay') {
-            level2Menu.style.display = 'flex'; // 하위 메뉴 보이기
-        } else {
-            level2Menu.style.display = 'none'; // 하위 메뉴 숨기기
-        }
-
-        // Level 1 필터링 로직
-        photos.forEach((photo) => {
-            const photoCategory = photo.dataset.category || ""; // null 방지
-            if (category === 'all' || photoCategory.split(" ").includes(category)) {
-                photo.style.display = 'block'; // 보이기
-            } else {
-                photo.style.display = 'none'; // 숨기기
-            }
-        });
-
-        // margin-bottom 업데이트
-        updateMarginBottom(category);
-    });
-
-    // Level 2 필터링
-    level2Menu.addEventListener('click', (e) => {
-        if (!e.target.matches('span')) return;
-
-        const subcategory = e.target.dataset.subcategory;
-
-        photos.forEach((photo) => {
-            const photoCategory = photo.dataset.category || "";
-            if (photoCategory.split(" ").includes(subcategory)) {
-                photo.style.display = 'block'; // 보이기
-            } else {
-                photo.style.display = 'none'; // 숨기기
-            }
-        });
-
-        // margin-bottom 업데이트
-        updateMarginBottom(subcategory);
-    });
-}); */
 
 
 // 프론트엔드
@@ -166,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(document.getElementById('form'));
     
         try {
-            const response = await fetch('http://localhost:3000/send-email', {
+            const response = await fetch('https://back-i4i2.onrender.com', {
                 method: 'POST',
                 body: formData,
             });
@@ -181,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error("❌ 서버 연결 오류:", error); // 자세한 오류 출력
             alert('서버 연결 오류');
-        }
+        }                       
     });
 
     // 취소 버튼 클릭 시 동작
@@ -294,7 +239,9 @@ window.addEventListener("resize", () => updateSlidePosition(true));
 //백엔드 주기적 호출 
 
 setInterval(() => {
-    fetch('https://your-api.onrender.com/ping')
+    fetch('https://back-i4i2.onrender.com')
         .then(response => console.log('Pinged Render server:', response.status))
         .catch(error => console.error('Ping error:', error));
 }, 600000); // 10분마다 실행
+
+
