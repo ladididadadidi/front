@@ -80,71 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-// 프론트엔드
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('confirmModal');
-    const confirmButton = document.getElementById('confirmSubmit');
-    const cancelButton = document.getElementById('cancelSubmit');
-    
-    console.log("✅ JavaScript 로드 완료");
-    console.log("✅ confirmButton:", confirmButton);
-    console.log("✅ cancelButton:", cancelButton);
-
-    // 버튼이 존재하지 않으면 에러 로그 출력하고 스크립트 종료
-    if (!confirmButton || !cancelButton) {
-        console.error("❌ 버튼 요소를 찾을 수 없습니다. HTML에서 id 확인 필요!");
-        return;
-    }
-
-    // ✅ 폼 제출 시 모달 표시
-    document.getElementById('form').addEventListener('submit', (event) => {
-        event.preventDefault(); 
-        console.log("📩 폼 제출 감지됨! 모달 표시");
-        modal.classList.remove('hidden2');  // 모달 표시
-    });
-
-    // ✅ "확인" 버튼 클릭 시
-    confirmButton.addEventListener('click', async (event) => {
-        event.preventDefault();
-        modal.classList.add('hidden2'); // 모달 닫기
-    
-        const formData = new FormData(document.getElementById('form'));
-    
-        try {
-            const response = await fetch('https://back-i4i2.onrender.com/api/submit', { // 수정된 URL
-                method: 'POST',
-                body: formData, // FormData는 Content-Type을 자동으로 설정하므로 헤더 설정 불필요
-            });
-    
-            if (response.ok) {
-                alert('문의가 전송되었습니다!');
-                document.getElementById('form').reset();
-            } else {
-                console.error("❌ 서버 응답 실패: ", response.status, response.statusText);
-                alert('문의 전송 실패');
-            }
-        } catch (error) {
-            console.error("❌ 서버 연결 오류:", error); // 자세한 오류 출력
-            alert('서버 연결 오류');
-        }                       
-    });
-
-    // 취소 버튼 클릭 시 동작
-    cancelButton.addEventListener('click', (event) => {
-        event.preventDefault(); // 기본 동작 방지 (페이지 리로드 방지)
-        
-        console.log("❌ 취소 버튼 클릭됨");  // 클릭된 버튼 확인용 로그
-        modal.classList.add('hidden2');    // 모달을 숨기기
-
-        // '/contact' 페이지로 이동
-        window.location.assign('contact.html');  // 페이지 리다이렉션
-    });
-});
-
-
-
-
 //타이틀
 document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () {
@@ -276,3 +211,65 @@ if (modal) {
     console.error("❌ 'modal' 요소를 찾을 수 없습니다.");
 }
 
+
+
+//프론트엔드
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('confirmModal');
+    const confirmButton = document.getElementById('confirmSubmit');
+    const cancelButton = document.getElementById('cancelSubmit');
+    
+    console.log("✅ JavaScript 로드 완료");
+    console.log("✅ confirmButton:", confirmButton);
+    console.log("✅ cancelButton:", cancelButton);
+
+    // 버튼이나 모달 요소가 없는 경우 에러 로그 출력하고 종료
+    if (!modal || !confirmButton || !cancelButton) {
+        console.error("❌ 버튼 또는 모달 요소를 찾을 수 없습니다. HTML에서 id 확인 필요!");
+        return;
+    }
+
+    // ✅ 폼 제출 시 모달 표시
+    document.getElementById('form').addEventListener('submit', (event) => {
+        event.preventDefault(); 
+        console.log("📩 폼 제출 감지됨! 모달 표시");
+        modal.classList.remove('hidden2');  // 모달 표시
+    });
+
+    // ✅ "확인" 버튼 클릭 시
+    confirmButton.addEventListener('click', async (event) => {
+        event.preventDefault();
+        modal.classList.add('hidden2'); // 모달 닫기
+    
+        const formData = new FormData(document.getElementById('form'));
+    
+        try {
+            const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
+                method: 'POST',
+                body: formData,
+            });
+    
+            if (response.ok) {
+                alert('문의가 전송되었습니다!');
+                document.getElementById('form').reset();
+            } else {
+                console.error("❌ 서버 응답 실패: ", response.status, response.statusText);
+                alert('문의 전송 실패');
+            }
+        } catch (error) {
+            console.error("❌ 서버 연결 오류:", error); // 자세한 오류 출력
+            alert('서버 연결 오류');
+        }                       
+    });
+
+    // 취소 버튼 클릭 시 동작
+    cancelButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        
+        console.log("❌ 취소 버튼 클릭됨");
+        modal.classList.add('hidden2'); // 모달을 숨기기
+
+        window.location.assign('contact.html');  // 페이지 리다이렉션
+    });
+});
