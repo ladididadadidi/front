@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(document.getElementById('form'));
     
         try {
-            const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
+            const response = await fetch('https://back-i4i2.onrender.com/api/submit', { // 수정된 URL
                 method: 'POST',
                 body: formData, // FormData는 Content-Type을 자동으로 설정하므로 헤더 설정 불필요
             });
@@ -141,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.assign('contact.html');  // 페이지 리다이렉션
     });
 });
+
 
 
 
