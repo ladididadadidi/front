@@ -223,11 +223,11 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("✅ JavaScript 로드 완료");
     console.log("✅ confirmButton:", confirmButton);
     console.log("✅ cancelButton:", cancelButton);
-
+    
     // 버튼이나 모달 요소가 없는 경우 에러 로그 출력하고 종료
     if (!modal || !confirmButton || !cancelButton) {
         console.error("❌ 버튼 또는 모달 요소를 찾을 수 없습니다. HTML에서 id 확인 필요!");
-        return;
+        return; // HTML 요소가 없으면 스크립트 실행을 종료
     }
 
     // ✅ 폼 제출 시 모달 표시
@@ -273,3 +273,14 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.assign('contact.html');  // 페이지 리다이렉션
     });
 });
+
+// 예를 들어, cloneNode() 호출 부분에서
+const elementToClone = document.getElementById('elementId');
+if (elementToClone) {
+    const clonedElement = elementToClone.cloneNode(true);  // 요소가 있을 경우에만 cloneNode 호출
+    // clonedElement를 사용한 후 처리
+} else {
+    console.error("❌ 요소가 존재하지 않아 cloneNode를 호출할 수 없습니다.");
+}
+
+
