@@ -183,62 +183,45 @@ setInterval(() => {
 }, 600000); // 10분마다 실행
 
 // 프론트엔드
-console.log("✅ main.js loaded");
+
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('confirmModal');
     const confirmButton = document.getElementById('confirmSubmit');
     const cancelButton = document.getElementById('cancelSubmit');
     const form = document.getElementById('form');
 
-    console.log("✅ Modal Element:", modal);
+    console.log("✅ Modal:", modal);
     console.log("✅ ConfirmButton:", confirmButton);
     console.log("✅ CancelButton:", cancelButton);
     console.log("✅ Form:", form);
 
-    // 폼 제출 이벤트
-   if (!form) {
-        console.error("❌ Form element not found!");
+    if (!form) {
+        console.error("❌ Form not found");
+        return;
+    }
+    if (!modal) {
+        console.error("❌ Modal not found");
         return;
     }
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        console.log("📩 Form submit event triggered");
-
-        if (!modal) {
-            console.error("❌ Modal element not found!");
-            return;
-        }
-
-        console.log("✅ Current modal classes:", modal.classList);
+        console.log("📩 Form submitted");
         modal.classList.remove('hidden2');
-        console.log("✅ Modal classes after remove:", modal.classList);
-
-        if (modal.classList.contains('hidden2')) {
-            console.error("❌ hidden2 class still present!");
-        } else {
-            console.log("✅ Modal should be visible now");
-        }
     });
 
-    // 확인 버튼 이벤트
     if (confirmButton) {
         confirmButton.addEventListener('click', async (event) => {
             event.preventDefault();
             modal.classList.add('hidden2');
-            console.log("✅ Confirm clicked, sending form data");
-
             const formData = new FormData(form);
-            console.log("📤 Sending data:", Object.fromEntries(formData));
 
             try {
-                const response = await fetch('https://back.onrender.com/api/submit', {
+                const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
                     method: 'POST',
                     body: formData,
                 });
                 const responseText = await response.text();
-                console.log("📥 Response:", response.status, responseText);
-
                 if (response.ok) {
                     alert('문의가 전송되었습니다!');
                     form.reset();
@@ -251,11 +234,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 취소 버튼 이벤트
     if (cancelButton) {
         cancelButton.addEventListener('click', (event) => {
             event.preventDefault();
-            console.log("❌ Cancel clicked");
             modal.classList.add('hidden2');
         });
     }
