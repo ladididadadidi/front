@@ -183,46 +183,56 @@ setInterval(() => {
 }, 600000); // 10분마다 실행
 
 // 프론트엔드
-/*
 console.log("✅ main.js loaded");
-
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('confirmModal');
     const confirmButton = document.getElementById('confirmSubmit');
     const cancelButton = document.getElementById('cancelSubmit');
     const form = document.getElementById('form');
 
-    // HTML 요소가 올바르게 로드되었는지 확인
-    console.log("✅ Modal:", modal);
+    console.log("✅ Modal Element:", modal);
     console.log("✅ ConfirmButton:", confirmButton);
     console.log("✅ CancelButton:", cancelButton);
     console.log("✅ Form:", form);
 
     // 폼 제출 이벤트
-    if (form) {
-        form.addEventListener('submit', (event) => {
-            event.preventDefault(); // 기본 제출 동작 방지
-            console.log("📩 Form submitted! Showing modal");
-            if (modal) {
-                modal.classList.remove('hidden2'); // 모달 표시
-                console.log("✅ Modal shown");
-            } else {
-                console.error("❌ Modal not found");
-            }
-        });
+   if (!form) {
+        console.error("❌ Form element not found!");
+        return;
     }
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        console.log("📩 Form submit event triggered");
+
+        if (!modal) {
+            console.error("❌ Modal element not found!");
+            return;
+        }
+
+        console.log("✅ Current modal classes:", modal.classList);
+        modal.classList.remove('hidden2');
+        console.log("✅ Modal classes after remove:", modal.classList);
+
+        if (modal.classList.contains('hidden2')) {
+            console.error("❌ hidden2 class still present!");
+        } else {
+            console.log("✅ Modal should be visible now");
+        }
+    });
 
     // 확인 버튼 이벤트
     if (confirmButton) {
         confirmButton.addEventListener('click', async (event) => {
             event.preventDefault();
-            if (modal) modal.classList.add('hidden2'); // 모달 숨김
+            modal.classList.add('hidden2');
+            console.log("✅ Confirm clicked, sending form data");
 
             const formData = new FormData(form);
             console.log("📤 Sending data:", Object.fromEntries(formData));
 
             try {
-                const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
+                const response = await fetch('https://back.onrender.com/api/submit', {
                     method: 'POST',
                     body: formData,
                 });
@@ -231,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (response.ok) {
                     alert('문의가 전송되었습니다!');
-                    form.reset(); // 폼 초기화
+                    form.reset();
                 } else {
                     alert(`문의 전송 실패: ${response.status}`);
                 }
@@ -246,32 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cancelButton.addEventListener('click', (event) => {
             event.preventDefault();
             console.log("❌ Cancel clicked");
-            if (modal) modal.classList.add('hidden2'); // 모달 숨김
+            modal.classList.add('hidden2');
         });
-    }
-});*/
-
-confirmButton.addEventListener('click', async (event) => {
-    event.preventDefault();
-    modal.classList.add('hidden2'); // 모달 닫기
-
-    const formData = new FormData(document.getElementById('form'));
-    
-    try {
-        const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
-            method: 'POST',
-            body: formData,
-        });
-
-        if (response.ok) {
-            alert('문의가 전송되었습니다!');
-            document.getElementById('form').reset();
-        } else {
-            console.error("❌ 서버 응답 실패: ", response.status, response.statusText);
-            alert('문의 전송 실패');
-        }
-    } catch (error) {
-        console.error("❌ 서버 연결 오류:", error);
-        alert('서버 연결 오류');
     }
 });
