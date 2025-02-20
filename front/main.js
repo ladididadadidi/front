@@ -174,19 +174,15 @@ allSlides.forEach(slide => {
 window.addEventListener("resize", () => updateSlidePosition(true));
 
 
-//백엔드 주기적 호출 
 
+// 백엔드 주기적 호출
 setInterval(() => {
     fetch('https://back-i4i2.onrender.com')
         .then(response => console.log('Pinged Render server:', response.status))
         .catch(error => console.error('Ping error:', error));
 }, 600000); // 10분마다 실행
 
-
-
-
-
-//프론트엔드
+// 프론트엔드
 console.log("✅ main.js loaded");
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -194,22 +190,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmButton = document.getElementById('confirmSubmit');
     const cancelButton = document.getElementById('cancelSubmit');
     const form = document.getElementById('form');
-    const fileInput = document.getElementById('fileInput');
-    const fileList = document.getElementById('fileList');
 
-    console.log("✅ Form:", form);
+    // HTML 요소가 올바르게 로드되었는지 확인
     console.log("✅ Modal:", modal);
     console.log("✅ ConfirmButton:", confirmButton);
     console.log("✅ CancelButton:", cancelButton);
-    console.log("✅ FileInput:", fileInput);
-    console.log("✅ FileList:", fileList);
+    console.log("✅ Form:", form);
 
     // 폼 제출 이벤트
     if (form) {
         form.addEventListener('submit', (event) => {
             event.preventDefault(); // 기본 제출 동작 방지
             console.log("📩 Form submitted! Showing modal");
-            if (modal) modal.classList.remove('hidden2'); // 모달 표시
+            if (modal) {
+                modal.classList.remove('hidden2'); // 모달 표시
+                console.log("✅ Modal shown");
+            } else {
+                console.error("❌ Modal not found");
+            }
         });
     }
 
@@ -231,15 +229,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("📥 Response:", response.status, responseText);
 
                 if (response.ok) {
-                    console.log("✅ Success! Resetting form");
                     alert('문의가 전송되었습니다!');
                     form.reset(); // 폼 초기화
                 } else {
-                    console.error("❌ Server error:", response.status, responseText);
                     alert(`문의 전송 실패: ${response.status}`);
                 }
             } catch (error) {
-                console.error("❌ Network error:", error);
                 alert(`서버 연결 오류: ${error.message}`);
             }
         });
@@ -251,18 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             console.log("❌ Cancel clicked");
             if (modal) modal.classList.add('hidden2'); // 모달 숨김
-        });
-    }
-
-    // 파일 업로드 처리
-    if (fileInput && fileList) {
-        fileInput.addEventListener('change', () => {
-            fileList.innerHTML = ''; // 기존 목록 초기화
-            Array.from(fileInput.files).forEach(file => {
-                const fileItem = document.createElement('div');
-                fileItem.textContent = file.name;
-                fileList.appendChild(fileItem);
-            });
         });
     }
 });
