@@ -187,7 +187,6 @@ setInterval(() => {
 
 
 //프론트엔드
-// 프론트엔드
 console.log("✅ main.js loaded");
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -199,19 +198,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const fileList = document.getElementById('fileList');
 
     // 각 요소가 존재하는지 확인
-    if (!form) return console.error("❌ Form not found");
-    if (!modal) return console.error("❌ Modal not found");
-    if (!confirmButton) return console.error("❌ ConfirmButton not found");
-    if (!cancelButton) return console.error("❌ CancelButton not found");
-    if (!fileInput) return console.error("❌ FileInput not found");
-    if (!fileList) return console.error("❌ FileList not found");
+    if (!form || !modal || !confirmButton || !cancelButton || !fileInput || !fileList) {
+        return console.error("❌ One or more elements not found");
+    }
 
-    console.log("✅ Form:", form);
-    console.log("✅ Modal:", modal);
-    console.log("✅ ConfirmButton:", confirmButton);
-    console.log("✅ CancelButton:", cancelButton);
-    console.log("✅ FileInput:", fileInput);
-    console.log("✅ FileList:", fileList);
+    console.log("✅ Form, Modal, Buttons, and File Input are present.");
 
     // 폼 제출 이벤트
     form.addEventListener('submit', (event) => {
@@ -223,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 확인 버튼 이벤트
     confirmButton.addEventListener('click', async (event) => {
         event.preventDefault();
+        console.log("📩 Confirm clicked");
         modal.classList.add('hidden2'); // modal 숨김
         const formData = new FormData(form);
         console.log("📤 Sending data:", Object.fromEntries(formData));
