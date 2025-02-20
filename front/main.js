@@ -197,64 +197,72 @@ document.addEventListener('DOMContentLoaded', () => {
     const fileInput = document.getElementById('fileInput');
     const fileList = document.getElementById('fileList');
 
-    // 각 요소가 존재하는지 확인
-    if (!form || !modal || !confirmButton || !cancelButton || !fileInput || !fileList) {
-        return console.error("❌ One or more elements not found");
-    }
-
-    console.log("✅ Form, Modal, Buttons, and File Input are present.");
+    console.log("✅ Form:", form);
+    console.log("✅ Modal:", modal);
+    console.log("✅ ConfirmButton:", confirmButton);
+    console.log("✅ CancelButton:", cancelButton);
+    console.log("✅ FileInput:", fileInput);
+    console.log("✅ FileList:", fileList);
 
     // 폼 제출 이벤트
-    form.addEventListener('submit', (event) => {
-        event.preventDefault(); // 기본 제출 동작을 방지합니다.
-        console.log("📩 Form submitted! Showing modal");
-        modal.classList.remove('hidden2'); // 모달을 보여줍니다.
-    });
+    if (form) {
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // 기본 제출 동작 방지
+            console.log("📩 Form submitted! Showing modal");
+            if (modal) modal.classList.remove('hidden2'); // 모달 표시
+        });
+    }
 
     // 확인 버튼 이벤트
-    confirmButton.addEventListener('click', async (event) => {
-        event.preventDefault();
-        console.log("📩 Confirm clicked");
-        modal.classList.add('hidden2'); // modal 숨김
-        const formData = new FormData(form);
-        console.log("📤 Sending data:", Object.fromEntries(formData));
+    if (confirmButton) {
+        confirmButton.addEventListener('click', async (event) => {
+            event.preventDefault();
+            if (modal) modal.classList.add('hidden2'); // 모달 숨김
 
-        try {
-            const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
-                method: 'POST',
-                body: formData,
-            });
-            const responseText = await response.text();
-            console.log("📥 Response:", response.status, responseText);
+            const formData = new FormData(form);
+            console.log("📤 Sending data:", Object.fromEntries(formData));
 
-            if (response.ok) {
-                console.log("✅ Success! Resetting form");
-                alert('문의가 전송되었습니다!');
-                form.reset(); // 폼 초기화
-            } else {
-                console.error("❌ Server error:", response.status, responseText);
-                alert(`문의 전송 실패: ${response.status}`);
+            try {
+                const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
+                    method: 'POST',
+                    body: formData,
+                });
+                const responseText = await response.text();
+                console.log("📥 Response:", response.status, responseText);
+
+                if (response.ok) {
+                    console.log("✅ Success! Resetting form");
+                    alert('문의가 전송되었습니다!');
+                    form.reset(); // 폼 초기화
+                } else {
+                    console.error("❌ Server error:", response.status, responseText);
+                    alert(`문의 전송 실패: ${response.status}`);
+                }
+            } catch (error) {
+                console.error("❌ Network error:", error);
+                alert(`서버 연결 오류: ${error.message}`);
             }
-        } catch (error) {
-            console.error("❌ Network error:", error);
-            alert(`서버 연결 오류: ${error.message}`);
-        }
-    });
+        });
+    }
 
     // 취소 버튼 이벤트
-    cancelButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        console.log("❌ Cancel clicked");
-        modal.classList.add('hidden2'); // modal 숨김
-    });
+    if (cancelButton) {
+        cancelButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            console.log("❌ Cancel clicked");
+            if (modal) modal.classList.add('hidden2'); // 모달 숨김
+        });
+    }
 
     // 파일 업로드 처리
-    fileInput.addEventListener('change', () => {
-        fileList.innerHTML = ''; // 기존 목록 초기화
-        Array.from(fileInput.files).forEach(file => {
-            const fileItem = document.createElement('div');
-            fileItem.textContent = file.name;
-            fileList.appendChild(fileItem);
+    if (fileInput && fileList) {
+        fileInput.addEventListener('change', () => {
+            fileList.innerHTML = ''; // 기존 목록 초기화
+            Array.from(fileInput.files).forEach(file => {
+                const fileItem = document.createElement('div');
+                fileItem.textContent = file.name;
+                fileList.appendChild(fileItem);
+            });
         });
-    });
+    }
 });
