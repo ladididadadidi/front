@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
                 method: 'POST',
-                body: formData, // FormData는 Content-Type을 자동으로 설정하므로 헤더 설정 불필요
+                body: formData,
             });
     
             if (response.ok) {
@@ -258,21 +258,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('문의 전송 실패');
             }
         } catch (error) {
-            console.error("❌ 서버 연결 오류:", error); // 자세한 오류 출력
+            console.error("❌ 서버 연결 오류:", error);
             alert('서버 연결 오류');
-        }                       
-
+        }
     });
 
     // 취소 버튼 클릭 시 동작
     cancelButton.addEventListener('click', (event) => {
         event.preventDefault(); // 기본 동작 방지 (페이지 리로드 방지)
-        
         console.log("❌ 취소 버튼 클릭됨");  // 클릭된 버튼 확인용 로그
         modal.classList.add('hidden2');    // 모달을 숨기기
-
-        // '/contact' 페이지로 이동
-        window.location.assign('contact.html');  // 페이지 리다이렉션
+        window.location.assign('/contact.html');  // 페이지 리다이렉션
     });
 });
 
