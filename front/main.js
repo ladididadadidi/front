@@ -206,9 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 폼 제출 이벤트
     form.addEventListener('submit', (event) => {
-        event.preventDefault();
+        event.preventDefault(); // 기본 제출 동작을 방지합니다.
         console.log("📩 Form submitted! Showing modal");
-        modal.classList.remove('hidden2'); // modal 표시
+        modal.classList.remove('hidden2'); // 모달을 보여줍니다.
     });
 
     // 확인 버튼 이벤트
