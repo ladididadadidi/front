@@ -183,6 +183,7 @@ setInterval(() => {
 }, 600000); // 10분마다 실행
 
 // 프론트엔드
+/*
 console.log("✅ main.js loaded");
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -247,5 +248,30 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("❌ Cancel clicked");
             if (modal) modal.classList.add('hidden2'); // 모달 숨김
         });
+    }
+});*/
+
+confirmButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    modal.classList.add('hidden2'); // 모달 닫기
+
+    const formData = new FormData(document.getElementById('form'));
+    
+    try {
+        const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
+            method: 'POST',
+            body: formData,
+        });
+
+        if (response.ok) {
+            alert('문의가 전송되었습니다!');
+            document.getElementById('form').reset();
+        } else {
+            console.error("❌ 서버 응답 실패: ", response.status, response.statusText);
+            alert('문의 전송 실패');
+        }
+    } catch (error) {
+        console.error("❌ 서버 연결 오류:", error);
+        alert('서버 연결 오류');
     }
 });
