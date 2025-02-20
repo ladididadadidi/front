@@ -185,33 +185,6 @@ setInterval(() => {
 
 
 
-const element = document.getElementById('elementId');
-if (element) {
-    const clone = element.cloneNode(true);
-    // 추가 작업
-} else {
-    console.error("❌ 'elementId' 요소를 찾을 수 없습니다.");
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const submitButton = document.getElementById('submitButton');
-    if (submitButton) {
-        submitButton.addEventListener('click', (event) => {
-            // 버튼 클릭 처리
-        });
-    } else {
-        console.error("❌ 'submitButton' 요소를 찾을 수 없습니다.");
-    }
-});
-
-const modal = document.getElementById('modal');
-if (modal) {
-    modal.style.display = 'block';  // 또는 원하는 스타일
-} else {
-    console.error("❌ 'modal' 요소를 찾을 수 없습니다.");
-}
-
-
 
 //프론트엔드
 console.log("✅ main.js loaded");
