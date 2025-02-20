@@ -215,51 +215,56 @@ if (modal) {
 
 //프론트엔드
 
+console.log("✅ main.js loaded");
+
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('confirmModal');
     const confirmButton = document.getElementById('confirmSubmit');
     const cancelButton = document.getElementById('cancelSubmit');
     
-    console.log("✅ JavaScript 로드 완료");
-    console.log("✅ confirmButton:", confirmButton);
-    console.log("✅ cancelButton:", cancelButton);
+    console.log("✅ Form:", form);
+    console.log("✅ Modal:", modal);
+    console.log("✅ ConfirmButton:", confirmButton);
+    console.log("✅ CancelButton:", cancelButton);
 
-    // 버튼이 존재하지 않으면 에러 로그 출력하고 스크립트 종료
-    if (!confirmButton || !cancelButton) {
-        console.error("❌ 버튼 요소를 찾을 수 없습니다. HTML에서 id 확인 필요!");
-        return;
-    }
 
-    // ✅ 폼 제출 시 모달 표시
-    document.getElementById('form').addEventListener('submit', (event) => {
-        event.preventDefault(); 
-        console.log("📩 폼 제출 감지됨! 모달 표시");
-        modal.classList.remove('hidden2');  // 모달 표시
+    if (!form) console.error("❌ Form not found");
+    if (!modal) console.error("❌ Modal not found");
+    if (!confirmButton) console.error("❌ ConfirmButton not found");
+    if (!cancelButton) console.error("❌ CancelButton not found");
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        console.log("📩 폼 제출 성공! Showing modal");
+        modal.classList.remove('hidden2');
     });
 
     // ✅ "확인" 버튼 클릭 시
     confirmButton.addEventListener('click', async (event) => {
         event.preventDefault();
-        modal.classList.add('hidden2'); // 모달 닫기
-    
+        modal.classList.add('hidden2');
         const formData = new FormData(document.getElementById('form'));
-    
+        console.log("📤 Sending data:", Object.fromEntries(formData));
+
         try {
             const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
                 method: 'POST',
                 body: formData,
             });
+            const responseText = await response.text();
+            console.log("📥 Response:", response.status, responseText);
     
             if (response.ok) {
+                console.log("✅ Success! Resetting form");
                 alert('문의가 전송되었습니다!');
                 document.getElementById('form').reset();
             } else {
-                console.error("❌ 서버 응답 실패: ", response.status, response.statusText);
-                alert('문의 전송 실패');
+                console.error("❌ Server error:", response.status, responseText);
+                alert(`문의 전송 실패: ${response.status}`);
             }
         } catch (error) {
-            console.error("❌ 서버 연결 오류:", error);
-            alert('서버 연결 오류');
+            console.error("❌ Network error:", error);
+            alert(`서버 연결 오류: ${error.message}`);
         }
     });
 
