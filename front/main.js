@@ -214,66 +214,90 @@ if (modal) {
 
 
 //프론트엔드
-
 console.log("✅ main.js loaded");
 
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('confirmModal');
     const confirmButton = document.getElementById('confirmSubmit');
     const cancelButton = document.getElementById('cancelSubmit');
-    
+    const form = document.getElementById('form');
+    const fileInput = document.getElementById('fileInput');
+    const fileList = document.getElementById('fileList');
+
     console.log("✅ Form:", form);
     console.log("✅ Modal:", modal);
     console.log("✅ ConfirmButton:", confirmButton);
     console.log("✅ CancelButton:", cancelButton);
-
+    console.log("✅ FileInput:", fileInput);
+    console.log("✅ FileList:", fileList);
 
     if (!form) console.error("❌ Form not found");
     if (!modal) console.error("❌ Modal not found");
     if (!confirmButton) console.error("❌ ConfirmButton not found");
     if (!cancelButton) console.error("❌ CancelButton not found");
+    if (!fileInput) console.error("❌ FileInput not found");
+    if (!fileList) console.error("❌ FileList not found");
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        console.log("📩 폼 제출 성공! Showing modal");
-        modal.classList.remove('hidden2');
-    });
+    // 폼 제출 이벤트
+    if (form) {
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            console.log("📩 Form submitted! Showing modal");
+            if (modal) modal.classList.remove('hidden2');
+        });
+    }
 
-    // ✅ "확인" 버튼 클릭 시
-    confirmButton.addEventListener('click', async (event) => {
-        event.preventDefault();
-        modal.classList.add('hidden2');
-        const formData = new FormData(document.getElementById('form'));
-        console.log("📤 Sending data:", Object.fromEntries(formData));
+    // 확인 버튼 이벤트
+    if (confirmButton) {
+        confirmButton.addEventListener('click', async (event) => {
+            event.preventDefault();
+            if (modal) modal.classList.add('hidden2');
+            const formData = new FormData(form);
+            console.log("📤 Sending data:", Object.fromEntries(formData));
 
-        try {
-            const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
-                method: 'POST',
-                body: formData,
-            });
-            const responseText = await response.text();
-            console.log("📥 Response:", response.status, responseText);
-    
-            if (response.ok) {
-                console.log("✅ Success! Resetting form");
-                alert('문의가 전송되었습니다!');
-                document.getElementById('form').reset();
-            } else {
-                console.error("❌ Server error:", response.status, responseText);
-                alert(`문의 전송 실패: ${response.status}`);
+            try {
+                const response = await fetch('https://back-i4i2.onrender.com/api/submit', {
+                    method: 'POST',
+                    body: formData,
+                });
+                const responseText = await response.text();
+                console.log("📥 Response:", response.status, responseText);
+
+                if (response.ok) {
+                    console.log("✅ Success! Resetting form");
+                    alert('문의가 전송되었습니다!');
+                    form.reset();
+                } else {
+                    console.error("❌ Server error:", response.status, responseText);
+                    alert(`문의 전송 실패: ${response.status}`);
+                }
+            } catch (error) {
+                console.error("❌ Network error:", error);
+                alert(`서버 연결 오류: ${error.message}`);
             }
-        } catch (error) {
-            console.error("❌ Network error:", error);
-            alert(`서버 연결 오류: ${error.message}`);
-        }
-    });
+        });
+    }
 
-    // 취소 버튼 클릭 시 동작
-    cancelButton.addEventListener('click', (event) => {
-        event.preventDefault(); // 기본 동작 방지 (페이지 리로드 방지)
-        console.log("❌ 취소 버튼 클릭됨");  // 클릭된 버튼 확인용 로그
-        modal.classList.add('hidden2');    // 모달을 숨기기
-        window.location.assign('/contact.html');  // 페이지 리다이렉션
-    });
+    // 취소 버튼 이벤트
+    if (cancelButton) {
+        cancelButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            console.log("❌ Cancel clicked");
+            if (modal) modal.classList.add('hidden2');
+            window.location.assign('/contact.html');
+        });
+    }
+
+    // 파일 업로드 처리
+    if (fileInput && fileList) {
+        fileInput.addEventListener('change', () => {
+            fileList.innerHTML = ''; // 기존 목록 초기화
+            Array.from(fileInput.files).forEach(file => {
+                const fileItem = document.createElement('div');
+                fileItem.textContent = file.name;
+                fileList.appendChild(fileItem);
+            });
+        });
+    }
 });
 
