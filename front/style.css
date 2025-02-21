@@ -1118,11 +1118,9 @@ main {
 }
 */
 
-.form{
-    width: 100%;
-}
 
 .input__container {
+    width: 100%;
     margin-bottom: 10px; /* 여백 축소 */
 }
 
