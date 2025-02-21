@@ -1097,6 +1097,7 @@ main {
     display: block; /* 한 줄 차지하도록 설정 */
 }
 
+/*
 .form{
     width: 100%;
 }
@@ -1115,6 +1116,42 @@ main {
 .input__container textarea{
     width: 100%;
 }
+*/
+
+.input__container {
+    margin-bottom: 10px; /* 여백 축소 */
+}
+
+.input__container label {
+    font-size: 0.9rem; /* 라벨 크기 축소 */
+    margin-bottom: 3px;
+}
+
+.input__container input,
+.input__container textarea {
+    padding: 6px; /* 입력 필드 패딩 축소 */
+    font-size: 0.9rem; /* 글자 크기 축소 */
+}
+
+/* 라디오 버튼 간격 조정 */
+div label {
+    font-size: 0.9rem;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* 파일 업로드 섹션 */
+div label[for="fileInput"] {
+    font-size: 0.9rem;
+}
+
+input[type="file"] {
+    font-size: 0.8rem;
+}
+
+
 
 
 
