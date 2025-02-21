@@ -1101,7 +1101,7 @@ main {
     width: 100%;
 }
 .input__container{
-    width: 50%;
+    width: 100%;
 }
 
 .input__container label {
@@ -1115,6 +1115,8 @@ main {
 .input__container textarea{
     width: 100%;
 }
+
+
 
 }
 
