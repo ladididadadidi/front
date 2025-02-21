@@ -1097,6 +1097,9 @@ main {
     display: block; /* 한 줄 차지하도록 설정 */
 }
 
+.input__container{
+    width: 768px;
+}
 
 .input__container label {
      font-size: 12px; 
