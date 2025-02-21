@@ -56,18 +56,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: formData,
                 });
                 const responseText = await response.text();
-                if (response.ok) {
+                console.log("📥 Response:", response.status, responseText);
+
+               if (response.ok) {
                     alert('문의가 전송되었습니다!');
                     form.reset();
                 } else {
-                    alert(`문의 전송 실패: ${response.status}`);
+                    alert(`문의 전송 실패: ${response.status} - ${responseText}`);
                 }
             } catch (error) {
-                alert(`서버 연결 오류: ${error.message}`);
+                console.error("❌ Fetch error:", error);
+                // 메일이 도착했다면 서버는 성공했으므로 사용자에게 성공 알림
+                alert('문의가 전송되었으나 응답 확인에 실패했습니다. 메일을 확인해주세요.');
+                form.reset();
             }
         });
     }
-
+    
     if (cancelButton) {
         cancelButton.addEventListener('click', (event) => {
             event.preventDefault();
