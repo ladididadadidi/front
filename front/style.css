@@ -1103,7 +1103,7 @@ main {
 }
 
 .input__container input{
-    width: 12px;
+    width: 100%;
 }
 
 .input__container textarea{
