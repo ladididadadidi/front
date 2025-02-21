@@ -1097,6 +1097,10 @@ main {
     display: block; /* 한 줄 차지하도록 설정 */
 }
 
+.form{
+    width: 80%;
+}
+
 }
 
   .gallery {
