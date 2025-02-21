@@ -1098,9 +1098,18 @@ main {
 }
 
 .form{
-    width: 80%;
+    width: 50%;
 }
 
+.input__container {
+    width: 50%;
+}
+.input__container label { font-size: 12px; }
+
+.input__container input,
+textarea {
+    width: 200px;
+}
 }
 
   .gallery {
