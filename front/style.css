@@ -1118,21 +1118,27 @@ main {
 }
 */
 
+main{
+    max-width: 100%;
+}
 
 .input__container {
+    margin-bottom: 8px; /* 여백 축소 */
     width: 100%;
-    margin-bottom: 10px; /* 여백 축소 */
 }
 
 .input__container label {
     font-size: 0.9rem; /* 라벨 크기 축소 */
     margin-bottom: 3px;
+    overflow-wrap: break-word;
 }
 
 .input__container input,
 .input__container textarea {
     padding: 6px; /* 입력 필드 패딩 축소 */
     font-size: 0.9rem; /* 글자 크기 축소 */
+    width: 100%; /* 너비를 100%로 고정 */
+    max-width: 100%; /* 초과 방지 */
 }
 
 /* 라디오 버튼 간격 조정 */
