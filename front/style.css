@@ -1098,7 +1098,7 @@ main {
 }
 
 .input__container{
-    width: 768px;
+    width: 100%;
 }
 
 .input__container label {
