@@ -1098,9 +1098,20 @@ main {
 }
 
 .input__container{
-    width: 480px;
+    width: 768px;
 }
 
+.input__container label {
+     font-size: 12px; 
+}
+
+.input__container input{
+    width: 100%;
+}
+
+.input__container textarea{
+    width: 100%;
+}
 
 }
 
