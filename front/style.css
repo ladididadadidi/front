@@ -1098,7 +1098,7 @@ main {
 }
 
 .form{
-    width: 50%;
+    width: 100%;
 }
 
 .input__container {
@@ -1108,9 +1108,12 @@ main {
      font-size: 10px; 
 }
 
-.input__container input,
-textarea {
+.input__container input{
     width: 20px;
+}
+
+.input__container textarea{
+    width: 200px;
 }
  .lable{
     font-size:10px;
