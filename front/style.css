@@ -1097,26 +1097,20 @@ main {
     display: block; /* 한 줄 차지하도록 설정 */
 }
 
-.form{
-    width: 100%;
-}
 
-.input__container {
-    width:100%;
-}
 .input__container label {
-     font-size: 10px; 
+     font-size: 12px; 
 }
 
 .input__container input{
-    width: 20px;
+    width: 12px;
 }
 
 .input__container textarea{
-    width: 200px;
+    width: 100%;
 }
  .lable{
-    font-size:10px;
+    font-size:12px;
  }
 }
 
