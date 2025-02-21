@@ -1123,19 +1123,19 @@ main {
 }
 
 .input__container label {
-    font-size: 0.9rem; /* 라벨 크기 축소 */
+    font-size:12px; /* 라벨 크기 축소 */
     margin-bottom: 3px;
 }
 
 .input__container input,
 .input__container textarea {
     padding: 6px; /* 입력 필드 패딩 축소 */
-    font-size: 0.9rem; /* 글자 크기 축소 */
+    font-size: 12px; /* 글자 크기 축소 */
 }
 
 /* 라디오 버튼 간격 조정 */
 div label {
-    font-size: 0.9rem;
+    font-size:12px;
 }
 
 input[type="radio"] {
@@ -1144,7 +1144,7 @@ input[type="radio"] {
 
 /* 파일 업로드 섹션 */
 div label[for="fileInput"] {
-    font-size: 0.9rem;
+    font-size: 12px;
 }
 
 input[type="file"] {
