@@ -1097,26 +1097,7 @@ main {
     display: block; /* 한 줄 차지하도록 설정 */
 }
 
-/*
-.form{
-    width: 100%;
-}
-.input__container{
-    width: 100%;
-}
 
-.input__container label {
-     font-size: 12px; 
-}
-
-.input__container input{
-    width: 100%;
-}
-
-.input__container textarea{
-    width: 100%;
-}
-*/
 
 main{
     max-width: 100%;
