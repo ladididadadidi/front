@@ -15,3 +15,10 @@ setInterval(() => {
         .then(response => console.log('Pinged Render server:', response.status))
         .catch(error => console.error('Ping error:', error));
 }, 600000); // 10분마다 실행
+
+
+
+
+
+
+
