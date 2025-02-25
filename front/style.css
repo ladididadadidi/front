@@ -1030,7 +1030,7 @@ main {
         margin-bottom: 580px;
     }
 
-    .photo-nozaki img{
+    .photo-nozaki img, .photo-jing img, .photo-asuka img{
         max-width: 350px; 
         height: auto; 
     }
