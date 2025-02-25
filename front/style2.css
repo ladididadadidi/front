@@ -239,6 +239,20 @@ section {
     object-fit: cover;
     cursor: pointer;
 }
+.slide.lazy {
+    width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease;
+}
+.slide.loading {
+    opacity: 0.5;
+    filter: blur(5px);
+}
+.slide.loaded {
+    opacity: 1;
+    filter: blur(0);
+}
+
 
 /* 모바일에서는 한 장씩 표시 */
 @media (max-width: 767px) {

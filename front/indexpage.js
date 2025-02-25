@@ -104,18 +104,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('slider');
+    const images = document.querySelectorAll('.slide.lazy');
     let currentIndex = 0;
-    const images = document.querySelectorAll('.slider-container img');
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modal-img');
+    const totalSlides = images.length;
 
-    function openModal(index) {
-        currentIndex = index;
-        modal.style.display = 'block';
-        modalImg.src = images[currentIndex].src;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    }, { rootMargin: '0px 0px 200px 0px' });
+
+    images.forEach(img => {
+        img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+        img.classList.add('loading');
+        observer.observe(img);
+    });
+
+    function updateSlide() {
+        const slideWidth = slider.clientWidth;
+        slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        slider.style.transition = 'transform 0.5s ease-in-out';
     }
 
-    images.forEach((img, index) => img.addEventListener('click', () => openModal(index)));
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlide();
+    }
+
+    setInterval(nextSlide, 3000);
+    updateSlide();
 });
