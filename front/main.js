@@ -17,7 +17,9 @@ setInterval(() => {
 }, 600000); // 10분마다 실행
 
 
-
+images[0].src = images[0].dataset.src; // 첫 이미지 즉시 로드
+    setInterval(nextSlide, 3000);
+    updateSlide();
 
 
 

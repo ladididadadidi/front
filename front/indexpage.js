@@ -101,5 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2000); // 0.3초 동안 먼저 보여주기
 });
 
-
+images[0].src = images[0].dataset.src; // 첫 이미지 즉시 로드
+    setInterval(nextSlide, 3000);
+    updateSlide();
 
