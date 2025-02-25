@@ -106,7 +106,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener('DOMContentLoaded', () => {
     const slider = document.getElementById('slider');
-    const images = document.querySelectorAll('.slide.lazy');
+    const images = document.querySelectorAll('.slide');
+    const lazyImages = document.querySelectorAll('.slide.lazy');
     let currentIndex = 0;
     const totalSlides = images.length;
 
@@ -115,17 +116,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 const img = entry.target;
                 img.src = img.dataset.src;
-                img.classList.add('loaded');
                 observer.unobserve(img);
             }
         });
-    }, { rootMargin: '0px 0px 200px 0px' });
+    }, { root: slider, rootMargin: '0px' });
 
-    images.forEach(img => {
-        img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
-        img.classList.add('loading');
-        observer.observe(img);
-    });
+    lazyImages.forEach(img => observer.observe(img));
 
     function updateSlide() {
         const slideWidth = slider.clientWidth;
@@ -136,6 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function nextSlide() {
         currentIndex = (currentIndex + 1) % totalSlides;
         updateSlide();
+        if (currentIndex < lazyImages.length) {
+            lazyImages[currentIndex].src = lazyImages[currentIndex].dataset.src; // 다음 이미지 미리 로드
+        }
     }
 
     setInterval(nextSlide, 3000);

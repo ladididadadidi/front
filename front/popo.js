@@ -83,16 +83,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('photos');
+    const images = document.querySelectorAll('.photos');
+    const lazyImages = document.querySelectorAll('.photos.lazy');
     let currentIndex = 0;
-    const images = document.querySelectorAll('.photos img');
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modal-img');
+    const totalSlides = images.length;
 
-    function openModal(index) {
-        currentIndex = index;
-        modal.style.display = 'block';
-        modalImg.src = images[currentIndex].src;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                observer.unobserve(img);
+            }
+        });
+    }, { root: slider, rootMargin: '0px' });
+
+    lazyImages.forEach(img => observer.observe(img));
+
+    function updateSlide() {
+        const slideWidth = slider.clientWidth;
+        slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        slider.style.transition = 'transform 0.5s ease-in-out';
     }
 
-    images.forEach((img, index) => img.addEventListener('click', () => openModal(index)));
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlide();
+        if (currentIndex < lazyImages.length) {
+            lazyImages[currentIndex].src = lazyImages[currentIndex].dataset.src; // 다음 이미지 미리 로드
+        }
+    }
+
+    setInterval(nextSlide, 3000);
+    updateSlide();
 });
