@@ -82,14 +82,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.photos img');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const img = entry.target;
-            img.src = img.dataset.src;
-            img.classList.add('loaded');
-            observer.unobserve(img);
-        }
-    });
-}, { rootMargin: '0px 0px 100px 0px' });
+    function openModal(index) {
+        currentIndex = index;
+        modal.style.display = 'block';
+        modalImg.src = images[currentIndex].src;
+    }
+
+    images.forEach((img, index) => img.addEventListener('click', () => openModal(index)));
+});

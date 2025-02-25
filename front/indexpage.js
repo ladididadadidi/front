@@ -105,14 +105,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const img = entry.target;
-            console.log(`Loading: ${img.dataset.src}`);
-            img.src = img.dataset.src;
-            img.classList.add('loaded');
-            observer.unobserve(img);
-        }
-    });
-}, { rootMargin: '0px 0px 300px 0px' });
+document.addEventListener('DOMContentLoaded', () => {
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.slider-container img');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+
+    function openModal(index) {
+        currentIndex = index;
+        modal.style.display = 'block';
+        modalImg.src = images[currentIndex].src;
+    }
+
+    images.forEach((img, index) => img.addEventListener('click', () => openModal(index)));
+});
