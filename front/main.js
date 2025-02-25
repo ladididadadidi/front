@@ -22,11 +22,16 @@ images[0].src = images[0].dataset.src; // 첫 이미지 즉시 로드
     updateSlide();
 
 
-
     document.addEventListener('DOMContentLoaded', () => {
-        const images = document.querySelectorAll('.photo-win');
+        // 모든 이미지 요소를 클래스 상관없이 선택
+        const images = document.querySelectorAll('.photo-win img, .photo-madoka img, .photos img, .photo-jing img, .photo-hanna img, .photo0nozaki img, .photo-asuka img, .photo-gallery img, .photo-mi img, .photo-noa img, .photo-tama img, .photo-a img');
         images.forEach(img => {
-            img.src = img.dataset.src; // 즉시 로드 테스트
-            img.onerror = () => console.error(`Failed: ${img.dataset.src}`);
+            if (img.dataset.src) {
+                img.src = img.dataset.src; // data-src가 있는 경우 로드
+            }
+            img.onerror = () => console.error(`Failed: ${img.src || img.dataset.src}`);
+            img.onload = () => console.log(`Loaded: ${img.src || img.dataset.src}`);
         });
+    
+      
     });
