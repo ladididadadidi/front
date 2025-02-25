@@ -1030,8 +1030,9 @@ main {
         margin-bottom: 580px;
     }
 
-    .photo-noza1 img, .photo-noza2 img{
+    .photo-nozaki img{
         max-width: 350px; 
+        height: auto; 
     }
     .happy1{
         margin-bottom: 430px;
