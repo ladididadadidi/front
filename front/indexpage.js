@@ -105,36 +105,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// script.js
-document.addEventListener('DOMContentLoaded', () => {
-    const images = document.querySelectorAll('.slider-container img');
-    
-    // Intersection Observer로 Lazy Loading
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            }
-        });
-    }, { rootMargin: '0px 0px 100px 0px' });
-
-    images.forEach(img => {
-        img.dataset.src = img.src; // 원본 src를 data-src로 이동
-        img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='; // placeholder
-        img.classList.add('loading');
-        observer.observe(img);
-    });
-
-    // 로딩 상태 관리
-    images.forEach(img => {
-        img.addEventListener('load', () => {
-            img.classList.remove('loading');
-            img.classList.add('loaded');
-        });
-    });
-});
