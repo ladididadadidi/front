@@ -2,7 +2,7 @@
   publish = "."  # front/ 내 파일만 배포
   command = "echo 'Skipping submodules'"  # 서브모듈 무시
 [[headers]]
-  for = "/*.webp"  # front/ 생략
+  for = "*.webp"  # front/ 생략
   [headers.values]
     Content-Type = "image/webp"
     Cache-Control = "public, max-age=31536000"
