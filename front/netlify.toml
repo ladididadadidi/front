@@ -1,3 +1,5 @@
+[build]
+  publish = "website" 
 [[headers]]
   for = "/front/*.webp"
   [headers.values]
