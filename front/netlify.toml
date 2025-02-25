@@ -1,6 +1,6 @@
 [build]
-  publish = "website"
-  command = "git submodule sync && git submodule update --init || true"  
+  publish = "website"  
+  command = "echo 'Skipping submodules'"  
 [[headers]]
   for = "/front/*.webp"
   [headers.values]
