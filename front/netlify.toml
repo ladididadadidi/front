@@ -1,7 +1,7 @@
 [build]
   publish = "website" 
 [[headers]]
-  for = "/front/*.webp"
+  for = "*.webp"
   [headers.values]
     Content-Type = "image/webp"
     Cache-Control = "public, max-age=31536000"
