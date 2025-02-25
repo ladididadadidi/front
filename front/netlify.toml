@@ -1,6 +1,6 @@
 [build]
   publish = "website"
-  command = "git submodule sync && git submodule update --init || true"  # 서브모듈 실패 무시
+  command = "git submodule sync && git submodule update --init || true"  
 [[headers]]
   for = "/front/*.webp"
   [headers.values]
