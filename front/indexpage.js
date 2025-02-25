@@ -105,3 +105,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            console.log(`Loading: ${img.dataset.src}`);
+            img.src = img.dataset.src;
+            img.classList.add('loaded');
+            observer.unobserve(img);
+        }
+    });
+}, { rootMargin: '0px 0px 300px 0px' });
