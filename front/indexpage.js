@@ -97,8 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(function () {
             document.getElementById("title-screen").style.display = "none"; // 완전히 숨김
             // 본문 표시
-        }, 1000); // 2초 후에 display: none; 설정
-    }, 2000); // 0.3초 동안 먼저 보여주기
+        }, 1600); // 2초 후에 display: none; 설정
+    }, 900); // 0.3초 동안 먼저 보여주기
 });
 
 
