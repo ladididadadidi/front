@@ -23,4 +23,10 @@ images[0].src = images[0].dataset.src; // 첫 이미지 즉시 로드
 
 
 
-
+    document.addEventListener('DOMContentLoaded', () => {
+        const images = document.querySelectorAll('.photo-win');
+        images.forEach(img => {
+            img.src = img.dataset.src; // 즉시 로드 테스트
+            img.onerror = () => console.error(`Failed: ${img.dataset.src}`);
+        });
+    });
