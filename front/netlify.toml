@@ -1,5 +1,5 @@
 [[headers]]
-  for = "/*.(webp|jpg|png|css|js)"
+  for = "/front/*.webp"
   [headers.values]
+    Content-Type = "image/webp"
     Cache-Control = "public, max-age=31536000"
-
