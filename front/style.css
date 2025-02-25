@@ -1035,8 +1035,8 @@ main {
         height: auto; 
     }
 
-    .wends-photo img{
-        max-width: 400px;
+    .wends-photo{
+        max-width: 480px;
     }
     .happy1{
         margin-bottom: 430px;
