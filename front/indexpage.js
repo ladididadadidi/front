@@ -116,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 const img = entry.target;
                 img.src = img.dataset.src;
+                if (img.dataset.srcset) img.srcset = img.dataset.srcset;
                 observer.unobserve(img);
             }
         });
@@ -127,16 +128,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const slideWidth = slider.clientWidth;
         slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
         slider.style.transition = 'transform 0.5s ease-in-out';
+        // 현재와 다음 이미지 미리 로드
+        if (currentIndex < lazyImages.length) {
+            lazyImages[currentIndex].src = lazyImages[currentIndex].dataset.src;
+            if (currentIndex + 1 < lazyImages.length) {
+                lazyImages[currentIndex + 1].src = lazyImages[currentIndex + 1].dataset.src;
+            }
+        }
     }
 
     function nextSlide() {
         currentIndex = (currentIndex + 1) % totalSlides;
         updateSlide();
-        if (currentIndex < lazyImages.length) {
-            lazyImages[currentIndex].src = lazyImages[currentIndex].dataset.src; // 다음 이미지 미리 로드
-        }
     }
 
+    images[0].src = images[0].dataset.src; // 첫 이미지 즉시 로드
     setInterval(nextSlide, 3000);
     updateSlide();
 });

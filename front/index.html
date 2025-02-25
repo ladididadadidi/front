@@ -71,7 +71,10 @@
          <div class="slider-container">
             <div class="slider" id="slider">
                 <!-- 이미지 리스트 -->
-                <img data-src="a1.webp" class="slide lazy" alt="Image 1" class="slide">
+                <img data-src="a1.webp" 
+                data-srcset="a1-small.webp 300w, a1-large.webp 600w" 
+                sizes="(max-width: 768px) 300px, 600px"
+                class="slide lazy" alt="Image 1" class="slide">
                 <img data-src="a2.webp" class="slide lazy" alt="Image 2" class="slide">
                 <img data-src="a3.webp" class="slide lazy" alt="Image 3" class="slide">
                 <img data-src="a4.webp" class="slide lazy" alt="Image 4" class="slide">
