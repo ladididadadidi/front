@@ -1058,11 +1058,16 @@ main {
     }
 
     .photo-noza1{
-        margin-bottom: 100px;
+        margin-bottom: 980px;
     }
 
+    .photo-noza2{
+        margin-bottom: -200px;
+    }
+
+
     .photo-a{
-        margin-bottom: 870px;
+        margin-bottom: 730px;
     }
 
     .photo-jing3 img{
