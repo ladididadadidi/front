@@ -1,37 +1,40 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>39</title>
-    <link rel="stylesheet" type="text/css" href="style.css?v=1.0">
+  <title>hanna</title>
 
-    <script src="https://kit.fontawesome.com/9d5c9c8785.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="style.css?v=1.0">
+
+  <script src="https://kit.fontawesome.com/9d5c9c8785.js" crossorigin="anonymous"></script>
+
+  <style type="text/css" media="screen, print">
+      @font-face {
+          font-family: 'S-CoreDream-3Light';
+          src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+          unicode-range: U+AC00-D7A3, U+1100-11FF;
+      }
+
+      @font-face {
+          font-family: 'SF_HambakSnow';
+          src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff') format('woff');
+          unicode-range: U+0020-007F;
+      }
   
-    <style type="text/css" media="screen, print">
-        @font-face {
-            font-family: 'S-CoreDream-3Light';
-            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-            unicode-range: U+AC00-D7A3, U+1100-11FF;
-        }
-  
-        @font-face {
-            font-family: 'SF_HambakSnow';
-            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff') format('woff');
-            unicode-range: U+0020-007F;
-        }
-    
-        body { font-family: 'S-CoreDream', 'SF_HambakSnow', serif }
-    </style>
+      body { font-family: 'S-CoreDream', 'SF_HambakSnow', serif }
+  </style>
 
-    <script src="main.js" defer></script>
+  
+  <script src="main.js" defer></script>
+
 
 </head>
 
 <body>
+
   <div id='wrap'>
         
     <nav class = "navbar">
@@ -61,35 +64,28 @@
 
    </nav>
 
-
     <main>
-        <h2>39 CULTURE 2025</h2>
-        <h6>LUKA & MIKU & RIN & MEIKO</h6>
+        
+        <h2>WIND BREAKER</h2>
+        <h6>KAJI REN</h6>
 
-        <div class="model-sns-no">
-            <h3>LUKA <a href="https://x.com/cha_e_cos" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a></h3>
-            <h3>MIKU <a href="https://x.com/Juliofmine" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a></h3> 
-            <h3>RIN <a href="https://x.com/cho_x__" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a></h3>
-            <h3>MEIKO <a href="https://x.com/seol9753" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a></h3>
+        <div class="model-sns">
+            <h3>Model <a href="https://x.com/@yan_yammi" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a></h3>
         </div>   
         
 
-        <div class="photo-nozaki">
-          <div class="photo-noza1">
-            <img src="392.webp"  onclick="openModal(this)" />
-            <img src="394.webp"  onclick="openModal(this)" />
-            <img src="391.webp"  onclick="openModal(this)" />
-            <img src="3910.webp"  onclick="openModal(this)" />
-           
+        <div class="photo-hanna">
+          <div class="photo-hanna2">
+            <img src="kaji1.webp" alt="한나1" onclick="openModal(this)" />
+            <img src="kaji3.webp" alt="한나1" onclick="openModal(this)" />
           </div>
-          <div class="photo-noza2">
-            <img src="395.webp"  onclick="openModal(this)" />
-            <img src="398.webp"  onclick="openModal(this)" />
-            <img src="3911.webp"  onclick="openModal(this)" />
-            <img src="399.webp"  onclick="openModal(this)" />
-          </div>          
+            
+          <div class="photo-hanna3">
+            <img src="kaji4.webp" alt="한나1" onclick="openModal(this)" />
+            <img src="kaji2.webp" alt="한나1" onclick="openModal(this)" />
+          </div>
+            
         </div>
-        
         
         <div id="modal" class="modal">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -102,7 +98,7 @@
 
         <script>
             let currentIndex = 0;
-            const images = document.querySelectorAll('.photo-nozaki img');
+            const images = document.querySelectorAll('.photo-hanna img');
             const modal = document.getElementById('modal');
             const modalImg = document.getElementById('modal-img');
         
@@ -130,7 +126,7 @@
               img.addEventListener('click', () => openModal(index));
             });
           </script>
-
+        
     </main>
     <footer>
       <nav class = "nav" >
@@ -159,6 +155,7 @@
       </p>
   </footer>
 </div>
+
 </body>
 
 </html>
